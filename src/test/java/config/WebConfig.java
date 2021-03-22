@@ -2,18 +2,19 @@ package config;
 
 import org.aeonbits.owner.Config;
 
-@Config.Sources("classpath:${env}.properties")
+@Config.LoadPolicy(Config.LoadType.MERGE)
+@Config.Sources({
+        "system:properties",
+        "classpath:remote_config.properties"
+})
 public interface WebConfig extends Config {
-    @Key("search.browser")
-    String searchBrowser();
 
-    @Key("search.version")
-    String searchVersion();
+    @Config.Key("url")
+    String url();
 
-    @Key("search.remote")
-    String searchRemote();
+    @Key("web.remote.driver.user")
+    String webRemoteDriverUser();
 
-    @Key("video.storage")
-    String videoStorage();
-
+    @Key("web.remote.driver.password")
+    String webRemoteDriverPassword();
 }
