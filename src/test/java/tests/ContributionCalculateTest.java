@@ -3,6 +3,7 @@ package tests;
 import com.codeborne.selenide.Condition;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -35,6 +36,14 @@ public class ContributionCalculateTest extends TestBase {
         $(".top-block #step_1").shouldHave(text("Для получения кредита введите номер телефона"));
         $("#OpenBkithreestepsForm_mobile").val(faker.phoneNumber().subscriberNumber(10));
         $(byName("btn_submit_step_1")).click();
+
+    }
+    @Test
+    @Story("Added story test")
+    @DisplayName("Main page should be loaded")
+    void WithStoryTest() {
+        open("");
+        $(".horizont__title").shouldBe(visible);
 
     }
 }
