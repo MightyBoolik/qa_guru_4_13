@@ -2,6 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Condition;
 import com.github.javafaker.Faker;
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -14,6 +15,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 @Tag("web")
+@Feature("Slider test in contribution calculator")
 public class ContributionCalculateTest extends TestBase {
     SliderTest slider = new SliderTest();
     Faker faker = new Faker();
