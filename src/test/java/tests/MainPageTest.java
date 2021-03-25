@@ -1,6 +1,7 @@
 package tests;
 
 import com.github.javafaker.Faker;
+import io.qameta.allure.AllureId;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
@@ -59,6 +60,22 @@ public class MainPageTest extends TestBase {
                 });
         step("Input phone number", () -> {
             $("#call-api-form .js-form-tel").val(faker.phoneNumber().subscriberNumber(9)).click();
+        });
+
+    }
+    @Test
+    @DisplayName("Test telegram message button")
+    @AllureId("#2043")
+    void telegramButtonTest() {
+        step("Open main page", () -> {
+            open("");
+            $("div.g-main").shouldBe(visible);
+        });
+        step("Click phone button", () -> {
+            $("div.js-open-btn").click();
+        });
+        step("Click telegram button", () -> {
+            $(byText("Telegram")).click();
         });
 
     }
