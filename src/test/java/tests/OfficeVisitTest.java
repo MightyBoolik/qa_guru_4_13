@@ -1,7 +1,9 @@
 package tests;
 
+import com.codeborne.selenide.CollectionCondition;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Feature;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -9,6 +11,7 @@ import org.openqa.selenium.Keys;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byLinkText;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
@@ -16,7 +19,7 @@ import static io.qameta.allure.Allure.step;
 @Tag("web")
 @Feature("Test button for office visit")
 public class OfficeVisitTest extends TestBase {
-
+@Disabled
     @Test
     @DisplayName("Sign up for the office")
     void visitOfficeButtonTest() {
@@ -45,7 +48,7 @@ public class OfficeVisitTest extends TestBase {
         step("Set visit date", () -> {
             $(".form__select-wrappers").click();
             $(byText("Другое")).shouldBe(visible).click();
-            $(".form__select-day").setValue("13.04.2021").pressEnter();
+            $(".form__select-day").setValue("16.04.2021").pressEnter();
 
         });
         sleep(3000);
@@ -54,7 +57,7 @@ public class OfficeVisitTest extends TestBase {
             $x("//div[contains(text(),'16:00')]").click();
         });
         step("Full name input", () -> {
-            $(".form__contacts-fullName").setValue("Кучаев Булат Салаватович").sendKeys(Keys.TAB);
+            $(".form__contacts-fullName").setValue("Иванов Алексей Вениаминович").sendKeys(Keys.TAB);
         });
         step("Phone number input", () -> {
             $(".form__contacts-phone").setValue(faker.phoneNumber().subscriberNumber(10)).shouldBe(visible);
