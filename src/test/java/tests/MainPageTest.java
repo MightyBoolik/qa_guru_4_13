@@ -65,7 +65,7 @@ public class MainPageTest extends TestBase {
     }
     @Test
     @DisplayName("Test telegram message button")
-    @AllureId("#2043")
+    @AllureId("2043")
     void telegramButtonTest() {
         step("Open main page", () -> {
             open("");
